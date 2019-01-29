@@ -44,7 +44,7 @@ def distance(source, target, cost=(1,1,1)):
                       
             D[i][j] = min(deletion, insertion, substitution_or_equal)
 
-    return D[rows-1][cols-1]
+    return D[-1][-1]
     
 def max_distance(source, target, cost=(1,1,1)):
     """Levenshtein maximum distance value"""

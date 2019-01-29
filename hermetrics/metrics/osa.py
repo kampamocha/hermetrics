@@ -43,23 +43,23 @@ def distance(source, target, cost=(1, 1, 1, 1)):
         for i in range(1, rows):
             deletion = D[i-1][j] + del_cost
             insertion = D[i][j-1] + ins_cost
-            substitution_or_equal = D[i-1][j-1]
+            substitution_or_not = D[i-1][j-1]
             if source[i-1] != target[j-1]:
-                substitution_or_equal += sub_cost
+                substitution_or_not += sub_cost
                 
-            D[i][j] = min(deletion, insertion, substitution_or_equal)
+            D[i][j] = min(deletion, insertion, substitution_or_not)
             
             if i > 1 and j > 1 and source[i-1] == target[j-2] and source[i-2] == target[j-1]:
                 D[i][j] = min(D[i][j], D[i-2][j-2] + tra_cost)
     
  
-    return D[rows-1][cols-1]
+    return D[-1][-1]
 
 
 # See comments inside functions
 def max_distance(source, target, cost=(1,1,1,1)):
     """
-    Levenshtein maximum distance value.
+    OSA maximum distance value.
     This version of max_distance does not consider transpositions
     because doing it will supress the effect of transpositions in the
     normalized distance.
@@ -82,7 +82,7 @@ def max_distance(source, target, cost=(1,1,1,1)):
 
 def max_distance_with_transpositions(source, target, cost=(1,1,1,1)):
     """
-    Levenshtein maximum distance value.
+    OSA maximum distance value.
     This version does consider transpositions, but used with the
     normalization function supress the effect of them
     

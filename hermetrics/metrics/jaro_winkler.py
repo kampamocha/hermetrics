@@ -8,6 +8,7 @@ Jaro Winkler similarity
 # https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance
 # http://richardminerich.com/tag/jaro-winkler/
 
+#import hermetrics.metrics.jaro as jaro
 import hermetrics.metrics.jaro as jaro
 
 def similarity(source, target, cost=1, p=0.1):
