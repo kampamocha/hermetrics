@@ -7,7 +7,7 @@ Hamming distance
 """
 
 # https://en.wikipedia.org/wiki/Hamming_distance
-# In this version is not mandatory to have sme length strings
+# In this version is not mandatory to have same length strings
 def distance(source, target, cost=1):
     """Hamming distance with right padding"""
     # Difference in length

@@ -51,9 +51,9 @@ class Metric:
         #if high == low:
         #    return high
         if x >= high:
-            return high
+            return 1
         if x <= low:
-            return low
+            return 0
         return (x - low) / (high - low)
     
     def normalized_distance(self, source, target, cost=1):
