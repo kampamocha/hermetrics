@@ -9,7 +9,7 @@ Damerau-Levenshtein distance
 # G.V. Bard. Spelling-Error  Tolerant, Order-Independent Pass-Phrases via the Damerau-Lvenshtein String-Edit Distance Metric
 # https://gist.github.com/badocelot/5327427
 # Check optimization at https://web.archive.org/web/20150909134357/http://mwh.geek.nz:80/2009/04/26/python-damerau-levenshtein-distance/
-from metrics.levenshtein import Levenshtein
+from levenshtein import Levenshtein
 
 class DamerauLevenshtein(Levenshtein):
     

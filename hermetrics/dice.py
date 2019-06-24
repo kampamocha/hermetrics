@@ -1,28 +1,30 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jan 16 18:27:43 2019
+Created on Tue Jan 29 12:19:17 2019
+Dice Similarity a.k.a. Sorenson-Dice
 @author: kampamocha
-Jaccard similarity over sets
 """
-from hermetrics import Metric
+from jaccard import Jaccard
 
-class Jaccard(Metric):
+class Dice(Jaccard):
     
     def __init__(self, name='Jaccard'):
         super().__init__(name=name)
-
+    
     def similarity(self, source, target, cost=1):
-        """Jaccard similarity"""
+        """Dice similarity"""   
         if len(source) == 0 and len(target) == 0:
             return 1
-        s = set(source)
-        t = set(target)
-        return len(set.intersection(s, t)) / len(set.union(s, t))
+        
+        J = super().similarity(source, target, cost)
+        return 2 * J / (1 + J)
     
     def distance(self, source, target, cost=1):
-        """Jaccard distance"""
+        """Dice distance"""
         return 1 - self.similarity(source, target, cost)
+
    
 if(__name__ == '__main__'):
-    print("Jaccard similarity")
+    print("Dice similarity")
+

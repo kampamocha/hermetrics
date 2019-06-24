@@ -5,7 +5,7 @@ Created on Wed Jan 16 18:27:43 2019
 Levenshtein distance
 @author: kampamocha
 """
-from hermetrics import Metric
+from metric import Metric
 
 class Levenshtein(Metric):
     
