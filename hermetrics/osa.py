@@ -10,7 +10,7 @@ Optimal String Alignment distance
 # simpler version of the Damerau-Levenshtein (DL) distance having the condiiton
 # that no substring is edited more than once, whereas the DL distance presents
 # no such restriction
-from metrics.levenshtein import Levenshtein
+from levenshtein import Levenshtein
 
 class Osa(Levenshtein):
     
@@ -61,30 +61,7 @@ class Osa(Levenshtein):
      
         return D[-1][-1]  
     
-    # See comments inside functions
-#    def max_distance(source, target, cost=(1,1,1,1)):
-#        """
-#        OSA maximum distance value.
-#        This version of max_distance does not consider transpositions
-#        because doing it will supress the effect of transpositions in the
-#        normalized distance.
-#        
-#        """
-#        s_len = len(source)
-#        t_len = len(target)
-#    
-#        if type(cost) == int or type(cost) == float:
-#            del_cost = ins_cost = sub_cost = tra_cost = cost
-#        else:
-#            del_cost, ins_cost, sub_cost, tra_cost = cost
-#    
-#        max_del = max(s_len - t_len, 0)
-#        max_ins = max(t_len - s_len, 0)
-#        max_sub = min(s_len, t_len)
-#        
-#        return max_del*del_cost + max_ins*ins_cost + max_sub*sub_cost
-    
-    
+
     def max_distance_with_transpositions(self, source, target, cost=(1,1,1,1)):
         """
         OSA maximum distance value.

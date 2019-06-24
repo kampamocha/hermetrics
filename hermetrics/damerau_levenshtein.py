@@ -9,7 +9,7 @@ Damerau-Levenshtein distance
 # G.V. Bard. Spelling-Error  Tolerant, Order-Independent Pass-Phrases via the Damerau-Lvenshtein String-Edit Distance Metric
 # https://gist.github.com/badocelot/5327427
 # Check optimization at https://web.archive.org/web/20150909134357/http://mwh.geek.nz:80/2009/04/26/python-damerau-levenshtein-distance/
-from metrics.levenshtein import Levenshtein
+from levenshtein import Levenshtein
 
 class DamerauLevenshtein(Levenshtein):
     
@@ -81,21 +81,3 @@ class DamerauLevenshtein(Levenshtein):
         
         return D[-1][-1]
     
-    
-    # See comments inside functions
-#    def max_distance(source, target, cost=(1,1,1,1)):
-#        """Damerau-Levenshtein maximum distance value."""
-#        s_len = len(source)
-#        t_len = len(target)
-#    
-#        if type(cost) == int or type(cost) == float:
-#            del_cost = ins_cost = sub_cost = tra_cost = cost
-#        else:
-#            del_cost, ins_cost, sub_cost, tra_cost = cost
-#    
-#        max_del = max(s_len - t_len, 0)
-#        max_ins = max(t_len - s_len, 0)
-#        max_sub = min(s_len, t_len)
-#        
-#        return max_del*del_cost + max_ins*ins_cost + max_sub*sub_cost
-
