@@ -48,14 +48,12 @@ class Metric:
 
     def normalize(self, x, high=1, low=0):
         """Function for value normalization"""
-        #if high == low:
-        #    return high
         if x >= high:
             return 1
         if x <= low:
             return 0
         return (x - low) / (high - low)
-    
+       
     def normalized_distance(self, source, target, cost=1):
         """Normalized distance between two objects"""
         return self.normalize(self.distance(source, target, cost), self.max_distance(source, target, cost), self.min_distance(source, target, cost))

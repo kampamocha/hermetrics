@@ -16,7 +16,7 @@ def similarity(source, target, cost=1):
 
 def distance(source, target, cost=1):
     """Jaccard distance"""
-    return 1 - similarity(source, target, cost=1)
+    return 1 - similarity(source, target, cost)
    
 if(__name__ == '__main__'):
     print("Jaccard similarity")
