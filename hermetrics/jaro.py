@@ -5,7 +5,7 @@ Created on Wed Jan 16 18:27:43 2019
 Jaro similarity
 @author: kampamocha
 """
-from metric import Metric
+from hermetrics.metric import Metric
 
 class Jaro(Metric):
 
