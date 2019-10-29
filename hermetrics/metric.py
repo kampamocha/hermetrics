@@ -53,7 +53,7 @@ class Metric:
     def similarity(self, source, target, cost=1):
         """Normalized similarity between two objects"""
         return 1 - self.normalized_distance(source, target, cost)
-
+                    
 if(__name__ == '__main__'):
     print("hermetrics is similar but different")
     
