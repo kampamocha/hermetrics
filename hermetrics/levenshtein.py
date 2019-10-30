@@ -6,7 +6,7 @@ Levenshtein distance
 @author: kampamocha
 """
 import matplotlib.pyplot as plt
-from hermetrics.metric import Metric
+from .metric import Metric
 
 class Levenshtein(Metric):
     

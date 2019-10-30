@@ -8,7 +8,7 @@ Jaro Winkler similarity
 # https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance
 # http://richardminerich.com/tag/jaro-winkler/
 
-from hermetrics.jaro import Jaro
+from .jaro import Jaro
 
 class JaroWinkler(Jaro):
 

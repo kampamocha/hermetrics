@@ -10,7 +10,7 @@ Optimal String Alignment distance
 # simpler version of the Damerau-Levenshtein (DL) distance having the condiiton
 # that no substring is edited more than once, whereas the DL distance presents
 # no such restriction
-from hermetrics.levenshtein import Levenshtein
+from .levenshtein import Levenshtein
 
 class Osa(Levenshtein):
     

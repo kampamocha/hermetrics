@@ -5,7 +5,7 @@ Created on Wed Jan 16 18:27:43 2019
 Hamming distance 
 @author: kampamocha
 """
-from hermetrics.metric import Metric
+from .metric import Metric
 
 # https://en.wikipedia.org/wiki/Hamming_distance
 # In this version is not mandatory to have same length strings

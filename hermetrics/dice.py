@@ -5,7 +5,7 @@ Created on Tue Jan 29 12:19:17 2019
 Dice Similarity a.k.a. Sorenson-Dice
 @author: kampamocha
 """
-from hermetrics.jaccard import Jaccard
+from .jaccard import Jaccard
 
 class Dice(Jaccard):
     
