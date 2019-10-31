@@ -9,7 +9,6 @@ Tests
 # python3 -m unittest discover hermetrics/tests
 
 # Check examples at:
-# https://www.javacodegeeks.com/2013/11/java-implementation-of-optimal-string-alignment.html
 # https://stackoverflow.com/questions/20258800/is-jellyfishs-damerau-levenshtein-distance-calculation-buggy
 # https://thetaiko.wordpress.com/2011/01/21/damerau-levenshtein-distance-in-python/
 # http://alias-i.com/lingpipe/demos/tutorial/stringCompare/read-me.html
@@ -28,9 +27,9 @@ class TestMetric(unittest.TestCase):
         """
         m = Metric()
         self.assertEqual(m.distance("abc", "abc"), 0)
-        self.assertEqual(m.distance("abc", "xyz"), 1)
+        self.assertEqual(m.distance("abc", "def"), 1)
         self.assertEqual(m.distance("abc", ""), 1)
-        self.assertEqual(m.distance("", "xyz"), 1)
+        self.assertEqual(m.distance("", "abc"), 1)
         self.assertEqual(m.distance("", ""), 0)
 
     def test_max_distance(self):
@@ -39,9 +38,9 @@ class TestMetric(unittest.TestCase):
         """
         m = Metric()
         self.assertEqual(m.max_distance("abc", "abc"), 1)
-        self.assertEqual(m.max_distance("abc", "xyz"), 1)
+        self.assertEqual(m.max_distance("abc", "def"), 1)
         self.assertEqual(m.max_distance("abc", ""), 1)
-        self.assertEqual(m.max_distance("", "xyz"), 1)
+        self.assertEqual(m.max_distance("", "abc"), 1)
         self.assertEqual(m.max_distance("", ""), 0)
 
     def test_min_distance(self):
@@ -50,9 +49,9 @@ class TestMetric(unittest.TestCase):
         """
         m = Metric()
         self.assertEqual(m.min_distance("abc", "abc"), 0)
-        self.assertEqual(m.min_distance("abc", "xyz"), 0)
+        self.assertEqual(m.min_distance("abc", "def"), 0)
         self.assertEqual(m.min_distance("abc", ""), 0)
-        self.assertEqual(m.min_distance("", "xyz"), 0)
+        self.assertEqual(m.min_distance("", "abc"), 0)
         self.assertEqual(m.min_distance("", ""), 0)
 
     def test_normalize(self):
@@ -80,9 +79,9 @@ class TestMetric(unittest.TestCase):
         """
         m = Metric()
         self.assertEqual(m.normalized_distance("abc", "abc"), 0)
-        self.assertEqual(m.normalized_distance("abc", "xyz"), 1)
+        self.assertEqual(m.normalized_distance("abc", "def"), 1)
         self.assertEqual(m.normalized_distance("abc", ""), 1)
-        self.assertEqual(m.normalized_distance("", "xyz"), 1)
+        self.assertEqual(m.normalized_distance("", "abc"), 1)
         self.assertEqual(m.normalized_distance("", ""), 0)
 
     def test_similarity(self):
@@ -91,9 +90,9 @@ class TestMetric(unittest.TestCase):
         """
         m = Metric()
         self.assertEqual(m.similarity("abc", "abc"), 1)
-        self.assertEqual(m.similarity("abc", "xyz"), 0)
+        self.assertEqual(m.similarity("abc", "def"), 0)
         self.assertEqual(m.similarity("abc", ""), 0)
-        self.assertEqual(m.similarity("", "xyz"), 0)
+        self.assertEqual(m.similarity("", "abc"), 0)
         self.assertEqual(m.similarity("", ""), 1)
         
 if __name__ == '__main__':
