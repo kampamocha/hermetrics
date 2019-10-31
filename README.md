@@ -32,7 +32,8 @@ Levenshtein distance is usually known as "the" edit distance. It is defined as t
 from hermetrics.levenshtein import Levenshtein
 
 lev = Levenshtein()
-lev.distance('ace', 'abcde')                           # 2
-lev.normalized_distance('ace', 'abcde')                # 0.4
-lev.similarity('ace', 'abcde')                        # 0.6
+
+lev.distance('ace', 'abcde') # 2
+lev.normalized_distance('ace', 'abcde') # 0.4
+lev.similarity('ace', 'abcde') # 0.6
 ```  
