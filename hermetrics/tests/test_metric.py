@@ -6,15 +6,6 @@ Tests
 @author: kampamocha
 """
 
-# python3 -m unittest discover hermetrics/tests
-
-# Check examples at:
-# https://stackoverflow.com/questions/20258800/is-jellyfishs-damerau-levenshtein-distance-calculation-buggy
-# https://thetaiko.wordpress.com/2011/01/21/damerau-levenshtein-distance-in-python/
-# http://alias-i.com/lingpipe/demos/tutorial/stringCompare/read-me.html
-
-# https://asecuritysite.com/forensics/simstring?word=loans%20and%20accounts%24loans%20accounts
-
 import unittest
 
 from hermetrics.metric import Metric
