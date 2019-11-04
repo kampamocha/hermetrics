@@ -17,7 +17,7 @@ class JaroWinkler(Jaro):
 
     def similarity(self, source, target, cost=1, p=0.1):
         """Jaro Winkler similarity"""
-        assert(0 <= p <= 0.25), "The p parameter must be a positive number not greater than 1/4"
+        assert(0 <= p <= 0.25), "The p parameter must be between 0 and 1/4 inclusive"
         
         max_l = 4    
         l = 0

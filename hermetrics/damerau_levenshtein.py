@@ -64,8 +64,8 @@ class DamerauLevenshtein(Levenshtein):
     #                            (j-last_match_col-1) * ins_cost + \
     #                            tra_cost
                 transposition = D[last_match_row][last_match_col] + \
-                                max((i-last_match_row-1) * del_cost, (j-last_match_col-1) * ins_cost) + \
-                                tra_cost
+                                max((i-last_match_row-1) * del_cost, \
+                                (j-last_match_col-1) * ins_cost) + tra_cost
                                 
                 D[i+1][j+1] = min(deletion, insertion, substitution, transposition)
                 

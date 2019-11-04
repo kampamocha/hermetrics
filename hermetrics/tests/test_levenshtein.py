@@ -66,9 +66,9 @@ class TestLevenshtein(unittest.TestCase):
         """
         m = Levenshtein()
         self.assertEqual(m.similarity("abc", "abc"), 1)
-        self.assertEqual(m.similarity("abc", "xyz"), 0)
+        self.assertEqual(m.similarity("abc", "def"), 0)
         self.assertEqual(m.similarity("abc", ""), 0)
-        self.assertEqual(m.similarity("", "xyz"), 0)
+        self.assertEqual(m.similarity("", "def"), 0)
         self.assertEqual(m.similarity("", ""), 1)
         self.assertEqual(m.similarity("start", "end"), 0)
         self.assertEqual(m.similarity("end", "ended"), 0.6)

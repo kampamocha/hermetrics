@@ -5,7 +5,7 @@ Created on Wed Jan 16 18:27:43 2019
 Levenshtein distance
 @author: kampamocha
 """
-import matplotlib.pyplot as plt
+from matplotlib.pyplot import gca
 from .metric import Metric
 
 class Levenshtein(Metric):
@@ -68,7 +68,8 @@ class Levenshtein(Metric):
 
     def show_matrix(self, source, target, M):
         """Show matrix with values from calculation"""       
-        ax = plt.gca()
+        #ax = plt.gca()
+        ax = gca()
         ax.set_yticks(range(len(source)+1))
         ax.set_xticks(range(len(target)+1))
         ax.set_yticklabels(list("ø" + source))

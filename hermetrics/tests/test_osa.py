@@ -13,8 +13,6 @@ import unittest
 
 from hermetrics.osa import Osa
 
-#from .osa import Osa
-
 class TestOsa(unittest.TestCase):
     
     def test_distance(self):
@@ -49,9 +47,9 @@ class TestOsa(unittest.TestCase):
         """
         m = Osa()
         self.assertEqual(m.similarity("abc", "abc"), 1)
-        self.assertEqual(m.similarity("abc", "xyz"), 0)
+        self.assertEqual(m.similarity("abc", "def"), 0)
         self.assertEqual(m.similarity("abc", ""), 0)
-        self.assertEqual(m.similarity("", "xyz"), 0)
+        self.assertEqual(m.similarity("", "def"), 0)
         self.assertEqual(m.similarity("", ""), 1)
         self.assertEqual(m.similarity("end", "ended"), 0.6)
         self.assertEqual(m.similarity("ABCDEFGH", "AB*D*F*H"), 0.625)
