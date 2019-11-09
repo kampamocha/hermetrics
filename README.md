@@ -60,5 +60,5 @@ lev.similarity('ace', 'abcde') # 0.6
 * Use \**kwargs instead of cost tuples
 * Weighted Levenshtein
 * More metrics
-* Allow parametrization of l in Jaro-Winkler
+* Allow variable maximun prefix length in Jaro-Winkler
 * Backtracking operations
