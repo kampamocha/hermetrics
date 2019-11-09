@@ -47,7 +47,7 @@ class Jaro(Metric):
         s_tokens = [source[i] for i in range(s_len) if s_idx[i]]
         t_tokens = [target[i] for i in range(t_len) if t_idx[i]]
         
-        t = sum(s != t for s,t in zip(s_tokens, t_tokens))
+        t = sum([s != t for s,t in zip(s_tokens, t_tokens)]) / 2
         
     #    k = 0
     #    for i in range(s_len):
@@ -59,7 +59,7 @@ class Jaro(Metric):
     #            t += 1
     #        k += 1
         
-        return ( m / s_len + m / t_len + (m - t/2) / m ) / 3
+        return ( m / s_len + m / t_len + (m - t) / m ) / 3
     
     def distance(self, source, target, cost=1):
         """Jaro distance"""
