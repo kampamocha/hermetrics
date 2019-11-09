@@ -37,3 +37,25 @@ lev.distance('ace', 'abcde') # 2
 lev.normalized_distance('ace', 'abcde') # 0.4
 lev.similarity('ace', 'abcde') # 0.6
 ```  
+### OSA (Optimal String Alignment)
+
+
+### Damerau-Levenshtein
+
+
+### Jaccard
+
+
+### Dice (Sorenson-Dice)
+
+
+### Jaro
+
+
+### Jaro-Winkler
+
+
+## To Do
+
+* Use \**kwargs instead of cost tuples
+* 
