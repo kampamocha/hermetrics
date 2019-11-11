@@ -50,6 +50,7 @@ lev.distance('ace', 'abcde') # 2
 lev.normalized_distance('ace', 'abcde') # 0.4
 lev.similarity('ace', 'abcde') # 0.6
 ```  
+
 ### OSA (Optimal String Alignment)
 
 The *OSA* distance is based on the *Levenshtein* distance but counting the *transposition* as a valid edit operation with the restriction that no substring can be transposed more than once.
