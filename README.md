@@ -97,11 +97,40 @@ Is related to *Jaccard* index in the following manner:
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;D=\frac{2J}{1+J}"/>
 
+```python
+from hermetrics.dice import Dice
+
+dic = Dice()
+
+dic.distance('abcd', 'abce') # 0.25
+dic.similarity('abcd', 'abce') # 0.75
+``` 
+
 ### Jaro
 
+*Jaro* distance is based on the *matching* characters present on two strings and the number of transpositions between them. A *matching* occurs when a character of a string is present on the other string but in a position no further away that certain threshold based on the lenght of the strings. The *Jaro* distance is normalized.
+
+```python
+from hermetrics.jaro import Jaro
+
+jar = Jaro()
+
+jar.distance('abcd', 'abe') # 0.278
+jar.similarity('abcd', 'abe') # 0.722
+``` 
 
 ### Jaro-Winkler
 
+Extension of *Jaro* distance with emphasis on the first characters of the strings, so strings that have *matching* characters on the beginning have more similarity than those that havae *matching* characters at the end.
+
+```python
+from hermetrics.jaro_winkler import JaroWinkler
+
+jaw = JaroWinkler()
+
+jaw.distance('abcd', 'abe') # 0.222
+jaw.similarity('abcd', 'abe') # 0.778
+``` 
 
 ## To Do
 
