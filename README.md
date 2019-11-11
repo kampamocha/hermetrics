@@ -95,7 +95,7 @@ jac.similarity('abcd', 'abce') # 0.6
 
 Is related to *Jaccard* index in the following manner:
 
-$D = 2J / (1+J)$
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;D=\frac{2J}{1+J}"/>
 
 ### Jaro
 
