@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 16 18:27:43 2019
-Levenshtein distance
-@author: kampamocha
-"""
 from matplotlib.pyplot import gca
 from .metric import Metric
 
@@ -81,7 +74,7 @@ class Levenshtein(Metric):
                 ax.text(j, i, M[i][j], ha='center', va='center')
         
         ax.imshow(M, aspect='equal', cmap='Blues')
+
     
 if(__name__ == '__main__'):
     print("Levenshtein distance")
-

@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jan 18 15:27:52 2019
-Python library for distance and similarity metrics
-@author: kampamocha
-"""
-
 class Metric:
     """Class for metric implementations"""
 
@@ -56,6 +48,7 @@ class Metric:
         """Normalized similarity between two objects"""
         return 1 - self.normalized_distance(source, target, cost)
                     
+
 if(__name__ == '__main__'):
     print("hermetrics is similar but different")
     

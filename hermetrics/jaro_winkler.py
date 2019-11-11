@@ -1,13 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 16 18:27:43 2019
-Jaro Winkler similarity
-@author: kampamocha
-"""
-# https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance
-# http://richardminerich.com/tag/jaro-winkler/
-
 from .jaro import Jaro
 
 class JaroWinkler(Jaro):

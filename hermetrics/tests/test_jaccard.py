@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 29 12:41:58 2019
-Tests
-@author: kampamocha
-"""
 # NOTE:
 # For now the tests only check functionality with costs = 1
 # Use other costs at your own peril

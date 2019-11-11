@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 16 18:27:43 2019
-Hamming distance 
-@author: kampamocha
-"""
 from .metric import Metric
 
 # https://en.wikipedia.org/wiki/Hamming_distance

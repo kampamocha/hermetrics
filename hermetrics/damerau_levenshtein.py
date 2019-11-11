@@ -1,14 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jan 25 17:31:23 2019
-Damerau-Levenshtein distance
-@author: kampamocha
-"""
-# https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance
-# G.V. Bard. Spelling-Error  Tolerant, Order-Independent Pass-Phrases via the Damerau-Lvenshtein String-Edit Distance Metric
-# https://gist.github.com/badocelot/5327427
-# Check optimization at https://web.archive.org/web/20150909134357/http://mwh.geek.nz:80/2009/04/26/python-damerau-levenshtein-distance/
 from .levenshtein import Levenshtein
 
 class DamerauLevenshtein(Levenshtein):
@@ -78,3 +67,6 @@ class DamerauLevenshtein(Levenshtein):
             self.show_matrix(source, target, [row[1:] for row in D[1:]])
         return D[-1][-1]
     
+   
+if(__name__ == '__main__'):
+    print("Damerau-Levenshtein distance")

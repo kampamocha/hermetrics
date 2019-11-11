@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 16 18:27:43 2019
-Jaro similarity
-@author: kampamocha
-"""
 from .metric import Metric
 
 class Jaro(Metric):
@@ -48,16 +41,6 @@ class Jaro(Metric):
         t_tokens = [target[i] for i in range(t_len) if t_idx[i]]
         
         t = sum([s != t for s,t in zip(s_tokens, t_tokens)]) / 2
-        
-    #    k = 0
-    #    for i in range(s_len):
-    #        if not s_idx[i]:
-    #            continue
-    #        while not t_idx[k]:
-    #            k += 1
-    #        if source[i] != target[k]:
-    #            t += 1
-    #        k += 1
         
         return ( m / s_len + m / t_len + (m - t) / m ) / 3
     

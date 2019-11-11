@@ -1,15 +1,9 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jan 25 09:22:59 2019
-Optimal String Alignment distance
-@author: kampamocha
-"""
 # https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance
 # Optimal String Alignment (OSA) also known as Restrited Edit distance is a 
 # simpler version of the Damerau-Levenshtein (DL) distance having the condiiton
 # that no substring is edited more than once, whereas the DL distance presents
 # no such restriction
+
 from .levenshtein import Levenshtein
 
 class Osa(Levenshtein):

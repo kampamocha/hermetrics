@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 29 12:41:58 2019
-Tests
-@author: kampamocha
-"""
-
 import unittest
 
 from hermetrics.metric import Metric

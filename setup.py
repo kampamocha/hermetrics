@@ -1,8 +1,3 @@
-"""
-Created on Wed Jan  9 13:53:17 2019
-@author: kampamocha
-"""
-
 import setuptools
 
 with open("README.md", "r") as fh:
