@@ -69,7 +69,7 @@ osa.similarity('abcd', 'abdc') # 0.75
 The *Damerau-Levenshtein* distance is like *OSA* but without the restriction on the number of transpositions for the same substring.
 
 ```python
-from hermetrics.damerau_levenshtein import DamderauLevenshtein
+from hermetrics.damerau_levenshtein import DamerauLevenshtein
 
 dam = DamerauLevenshtein()
 
@@ -80,9 +80,22 @@ dam.similarity('abcd', 'cbad') # 0.5
 
 ### Jaccard
 
+The *Jaccard* index considers the strings as a *bag-of-characters* set and computes the cardinality of the intersection over the cardinality of the union. The distance function for *Jaccard* index is already normalized.
+
+```python
+from hermetrics.jaccard import Jaccard
+
+jac = Jaccard()
+
+jac.distance('abcd', 'abce') # 0.4 
+jac.similarity('abcd', 'abce') # 0.6
+``` 
 
 ### Dice (Sorenson-Dice)
 
+Is related to *Jaccard* index in the following manner:
+
+$D = 2J / (1+J)$
 
 ### Jaro
 
