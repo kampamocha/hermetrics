@@ -25,6 +25,18 @@ For the time being the following metrics have been implemented:
 
 ### Hamming
 
+The Hamming distance count the positions where two strings differ. Normally the Hamming distance is only defined for strings of equal size but in this implementation strings of different size can be compared.
+
+```python
+from hermetrics.hamming import Hamming
+
+ham = Hamming()
+
+ham.distance('abcd', 'abce') # 1
+ham.normalized_distance('abcd', 'abce') # 0.25
+ham.similarity('abcd', 'abce') # 0.75
+```  
+
 ### Levenshtein
 
 Levenshtein distance is usually known as "the" edit distance. It is defined as the minimum number of edit operations (*deletion*, *insertion* and *substitution*) to transform the source string into the target string. The algorithm for distance computation is implemented using the dynamic programming approach with the full matrix construction, althought there are optimizations for time and space complexity those are not implemented here.
@@ -40,9 +52,31 @@ lev.similarity('ace', 'abcde') # 0.6
 ```  
 ### OSA (Optimal String Alignment)
 
+The *OSA* distance is based on the *Levenshtein* distance but counting the *transposition* as a valid edit operation with the restriction that no substring can be transposed more than once.
+
+```python
+from hermetrics.osa import Osa
+
+osa = Osa()
+
+osa.distance('abcd', 'abdc') # 1
+osa.normalized_distance('abcd', 'abdc') # 0.25
+osa.similarity('abcd', 'abdc') # 0.75
+``` 
 
 ### Damerau-Levenshtein
 
+The *Damerau-Levenshtein* distance is like *OSA* but without the restriction on the number of transpositions for the same substring.
+
+```python
+from hermetrics.damerau_levenshtein import DamderauLevenshtein
+
+dam = DamerauLevenshtein()
+
+dam.distance('abcd', 'cbad') # 2
+dam.normalized_distance('abcd', 'cbad') # 0.5
+dam.similarity('abcd', 'cbad') # 0.5
+``` 
 
 ### Jaccard
 
@@ -60,6 +94,6 @@ lev.similarity('ace', 'abcde') # 0.6
 
 * Use \**kwargs instead of cost tuples
 * Weighted Levenshtein
-* More metrics
 * Allow variable maximun prefix length in Jaro-Winkler
-* Backtracking operations
+* Implement backtracking of operations
+* More metrics
