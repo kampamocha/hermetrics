@@ -1,7 +1,7 @@
 # hermetrics
 Python library for distance and similarity metrics
 
-## Install (Comming soon...)
+## Install
 
 From pypi:
 
