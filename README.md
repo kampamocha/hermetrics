@@ -12,7 +12,7 @@ pip install hermetrics
 ## Overview
 Hermetrics is a library designed for use in experimentation with string metrics. The library features a base class *Metric* which is highly configurable and can be used to implement custom metrics.
 
-Based on *Metric* are some common string metrics already implemented to compute the *distance* between two strings. Some common edit distance metrics such as *Levenshtein* can be parametrized with different costs for each edit operation, althought have been only thorougly tested with costs equal to 1. Also, in theory, the implemented metrics can be used to compare any iterable in addition to strings, but more tests are needed.
+Based on *Metric* are some common string metrics already implemented to compute the *distance* between two strings. Some common edit distance metrics such as *Levenshtein* can be parametrized with different costs for each edit operation, althought have been only thorougly tested with costs equal to 1. Also, the implemented metrics can be used to compare any iterable in addition to strings, but more tests are needed.
 
 A metric has three main methods *distance*, *normalized_distance* and *similarity*. In general the *distance* method computes the absolute distance between two strings, whereas *normalized_distance* can be used to scale the distance to a particular range, usually (0,1), and the *similarity* method being normally defined as (1-*normalized_distance*).
 
@@ -20,7 +20,7 @@ The normalization of the distance can be customized overriding the auxiliary met
 
 ## *Metric* class
 
-*Metric* is a base class that can receive as arguments six specific functions to be used as methods for the metric being implemented. The class constructor just assign the functions received as parameters to the class methods. If ypu omit some parameter then a default method is used.
+*Metric* is a base class that can receive as arguments six specific functions to be used as methods for the metric being implemented. The class constructor just assign the functions received as parameters to the class methods. If ypu omit some parameter then a default method is used, which allows you to implement metrics without the need to rewrite some of the functionality that is common among metrics.
 
 ```python
 class Metric:
@@ -37,7 +37,9 @@ class Metric:
         self.similarity = similarity or self.similarity
 ```  
 ### Default methods
-Description of default methods for the *Metric* class. In general a method of a metric receives three parameters:
+Description of default methods for the *Metric* class.
+
+In general a method of a metric receives three parameters:
 * *source*. The source string or iterable to compare.
 * *target*. The target string or iterable to compare.
 * *cost=1*. If a number, the unit cost for any edit operations. If a tuple, the cost for edit operations in the following order (deletion, insertion, substitution, transposition).
@@ -94,6 +96,16 @@ lev = Levenshtein()
 lev.distance('ace', 'abcde') # 2
 lev.normalized_distance('ace', 'abcde') # 0.4
 lev.similarity('ace', 'abcde') # 0.6
+
+# With cost=2
+lev.distance('ace', 'abcde', 2) # 4
+lev.normalized_distance('ace', 'abcde', 2) # 0.4
+lev.similarity('ace', 'abcde', 2) # 0.6
+
+# With different costs for deletion, insertion and substituion
+lev.distance('ace', 'abcde', (1, 1.25, 1.5)) # 2.5
+lev.normalized_distance('ace', 'abcde', (1, 1.25, 1.5)) # 0.3571
+lev.similarity('ace', 'abcde', (1, 1.25, 1.5)) # 0.6429
 ```  
 
 ### OSA (Optimal String Alignment)
@@ -108,6 +120,11 @@ osa = Osa()
 osa.distance('abcd', 'abdc') # 1
 osa.normalized_distance('abcd', 'abdc') # 0.25
 osa.similarity('abcd', 'abdc') # 0.75
+
+# With different costs for deletion, insertion, substituion and transposition
+osa.distance('ace', 'abcde', (0.75, 1, 1.25, 1.5)) # 2
+osa.normalized_distance('ace', 'abcde',  (0.75, 1, 1.25, 1.5)) # 0.3478
+osa.similarity('ace', 'abcde',  (0.75, 1, 1.25, 1.5)) # 0.6522
 ``` 
 
 ### Damerau-Levenshtein
@@ -122,6 +139,11 @@ dam = DamerauLevenshtein()
 dam.distance('abcd', 'cbad') # 2
 dam.normalized_distance('abcd', 'cbad') # 0.5
 dam.similarity('abcd', 'cbad') # 0.5
+
+# With different costs for deletion, insertion, substituion and transposition
+dam.distance('ace', 'abcde', (0.75, 1, 1.25, 1.5)) # 2
+dam.normalized_distance('ace', 'abcde',  (0.75, 1, 1.25, 1.5)) # 0.3478
+dam.similarity('ace', 'abcde', (0.75, 1, 1.25, 1.5)) # 0.6522
 ``` 
 
 ### Jaccard
@@ -167,7 +189,7 @@ jar.similarity('abcd', 'abe') # 0.722
 
 ### Jaro-Winkler
 
-Extension of *Jaro* distance with emphasis on the first characters of the strings, so strings that have *matching* characters on the beginning have more similarity than those that havae *matching* characters at the end.
+Extension of *Jaro* distance with emphasis on the first characters of the strings, so strings that have *matching* characters on the beginning have more similarity than those that have *matching* characters at the end. This metric depends on an additional parameter *p* (with *0<=p<=0.25* and default *p=0.1*) that is a weighting factor for additional score obtained for matching characters at the beginning of the strings..
 
 ```python
 from hermetrics.jaro_winkler import JaroWinkler
@@ -176,6 +198,10 @@ jaw = JaroWinkler()
 
 jaw.distance('abcd', 'abe') # 0.222
 jaw.similarity('abcd', 'abe') # 0.778
+
+jaw.similarity('abcd', 'abe', p=0.05) # 0.750
+jaw.similarity('abcd', 'abe', p=0.15) # 0.806
+jaw.similarity('abcd', 'abe', p=0.25) # 0.861
 ``` 
 
 ## To Do
@@ -185,3 +211,4 @@ jaw.similarity('abcd', 'abe') # 0.778
 * Allow variable maximun prefix length in Jaro-Winkler
 * Implement backtracking of operations
 * More metrics
+* Type hints?
