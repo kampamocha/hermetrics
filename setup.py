@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="hermetrics",
-    version="0.1.0",
+    version="0.1.1",
     author="kampamocha",
     author_email="diego.campos.sobrino@gmail.com",
     description="A package for string distance and similarity metrics",
