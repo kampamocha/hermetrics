@@ -208,6 +208,7 @@ jaw.similarity('abcd', 'abe', p=0.25) # 0.861
 
 * Use \**kwargs instead of cost tuples
 * Weighted Levenshtein
+* Show matrix for Levenshtein like distances
 * Allow variable maximun prefix length in Jaro-Winkler
 * Implement backtracking of operations
 * More metrics
