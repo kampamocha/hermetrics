@@ -18,6 +18,51 @@ A metric has three main methods *distance*, *normalized_distance* and *similarit
 
 The normalization of the distance can be customized overriding the auxiliary methods for its computation. Those methods are *max_distance*, *min_distance* and *normalize*.
 
+## *Metric* class
+
+*Metric* is a base class that can receive as arguments six specific functions to be used as methods for the metric being implemented. The class constructor just assign the functions received as parameters to the class methods. If ypu omit some parameter then a default method is used.
+
+```python
+class Metric:
+    """Class for metric implementations"""
+
+    def __init__(self, distance=None, max_distance=None, min_distance=None, normalize=None, normalized_distance=None,  similarity=None, name='Generic'):
+        """Class constructor - receives a function for distance or similarity evaluation"""
+        self.name = name
+        self.distance = distance or self.distance
+        self.max_distance = max_distance or self.max_distance
+        self.min_distance = min_distance or self.min_distance
+        self.normalize = normalize or self.normalize        
+        self.normalized_distance = normalized_distance or self.normalized_distance
+        self.similarity = similarity or self.similarity
+```  
+### Methods
+Description of default methods for the *Metric* class. In general the methods of a metric receive three parameters:
+* *source*. The source string or iterable to compare.
+* *target*. The target string or iterable to compare.
+* *cost=1*. If a number, the unit cost for any edit operations. If a tuple, the cost for edit operations in the following order (deletion, insertion, substitution, transposition).
+
+#### distance
+The *distance* method computes the total cost of transforming the *source* string on the *target* string. The default method just return 0 if the strings are equal and 1 otherwise.
+
+#### max_distance
+Returns the maximum value of the distance between *source* and *target* given a specific *cost* for edit operations. The default method just return 1 given *source* and *target* don't have both length=0, in that case just return 0.
+
+#### min_distance
+Return 0.
+
+##### normalize
+This method is used to scale a value between two limits, usually those obtained by *max_distance* and *min_distance*, to the (0,1) range. Unlike the other methods, *normalize* doesn't receive the usual arguments (*source*, *target* and *cost*), instead receive the following:
+
+* *x*. The value to be normalized.
+* *low=0*. The minimum value for the normalization, usually obtained with *min_distance* method.
+* *high=1*. The maximum value for the normalization, usually obtained with *max_distance* method.
+
+#### normalized distance
+Scale the distance between *source* and *target* for specific *cost* to the (0,1) range using *max_distance*, *min_distance* and *normalize*
+
+#### similarity
+Computes how similar are *source* and *target* given a specific *cost*. Usually defined as 1 - *normalized_distance* so the result is also in the (0,1) range.
 
 ## Metrics
 
@@ -25,7 +70,7 @@ For the time being the following metrics have been implemented:
 
 ### Hamming
 
-The Hamming distance count the positions where two strings differ. Normally the Hamming distance is only defined for strings of equal size but in this implementation strings of different size can be compared.
+The Hamming distance count the positions where two strings differ. Normally the Hamming distance is only defined for strings of equal size but in this implementation strings of different size can be compared counting the difference in size as part of the distance.
 
 ```python
 from hermetrics.hamming import Hamming
