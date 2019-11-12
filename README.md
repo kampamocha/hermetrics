@@ -37,7 +37,7 @@ class Metric:
         self.similarity = similarity or self.similarity
 ```  
 ### Default methods
-Description of default methods for the *Metric* class. In general the methods of a metric receive three parameters:
+Description of default methods for the *Metric* class. In general a method of a metric receives three parameters:
 * *source*. The source string or iterable to compare.
 * *target*. The target string or iterable to compare.
 * *cost=1*. If a number, the unit cost for any edit operations. If a tuple, the cost for edit operations in the following order (deletion, insertion, substitution, transposition).
@@ -59,10 +59,10 @@ This method is used to scale a value between two limits, usually those obtained 
 * *high=1*. The maximum value for the normalization, usually obtained with *max_distance* method.
 
 #### normalized distance
-Scale the distance between *source* and *target* for specific *cost* to the (0,1) range using *max_distance*, *min_distance* and *normalize*
+Scale the distance between *source* and *target* for specific *cost* to the (0,1) range using *max_distance*, *min_distance* and *normalize*.
 
 #### similarity
-Computes how similar are *source* and *target* given a specific *cost*. Usually defined as 1 - *normalized_distance* so the result is also in the (0,1) range.
+Computes how similar are *source* and *target* given a specific *cost*. By default defined as 1 - *normalized_distance* so the result is also in the (0,1) range.
 
 ## Metrics
 
