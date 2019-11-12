@@ -51,7 +51,14 @@ class Osa(Levenshtein):
             self.show_matrix(source, target, D)
         return D[-1][-1]  
     
-
+    def max_distance(self, source, target, cost=(1,1,1,1)):
+        """OSA maximum distance value (same as Levenshtein to account for difference in operations)"""
+        if type(cost) == int or type(cost) == float:
+            lev_cost = cost
+        else:
+            lev_cost = cost[:3]
+        return super().max_distance(source, target, lev_cost)
+    
     def max_distance_with_transpositions(self, source, target, cost=(1,1,1,1)):
         """
         OSA maximum distance value.
