@@ -67,6 +67,14 @@ class DamerauLevenshtein(Levenshtein):
             self.show_matrix(source, target, [row[1:] for row in D[1:]])
         return D[-1][-1]
     
+    def max_distance(self, source, target, cost=(1,1,1,1)):
+        """Damerau-Levenshtein maximum distance value (same as Levenshtein to account for difference in operations)"""
+        if type(cost) == int or type(cost) == float:
+            lev_cost = cost
+        else:
+            lev_cost = cost[:3]        
+        return super().max_distance(source, target, lev_cost)
+
    
 if(__name__ == '__main__'):
     print("Damerau-Levenshtein distance")

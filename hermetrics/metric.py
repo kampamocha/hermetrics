@@ -2,7 +2,7 @@ class Metric:
     """Class for metric implementations"""
 
     def __init__(self, distance=None, max_distance=None, min_distance=None, normalize=None, normalized_distance=None,  similarity=None, name='Generic'):
-        """Class constructor - receives a function for distance or similarity evaluation"""
+        """Class constructor - receives functions for distance or similarity evaluation"""
         self.name = name
         self.distance = distance or self.distance
         self.max_distance = max_distance or self.max_distance
