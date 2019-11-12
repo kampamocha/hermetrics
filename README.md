@@ -51,7 +51,7 @@ Returns the maximum value of the distance between *source* and *target* given a 
 #### min_distance
 Return 0.
 
-##### normalize
+#### normalize
 This method is used to scale a value between two limits, usually those obtained by *max_distance* and *min_distance*, to the (0,1) range. Unlike the other methods, *normalize* doesn't receive the usual arguments (*source*, *target* and *cost*), instead receive the following:
 
 * *x*. The value to be normalized.
