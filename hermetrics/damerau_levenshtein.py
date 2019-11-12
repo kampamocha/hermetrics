@@ -5,7 +5,7 @@ class DamerauLevenshtein(Levenshtein):
     def __init__(self, name='Damerau-Levenshtein'):
         super().__init__(name=name)
 
-    def distance(self, source, target, cost=(1, 1, 1, 1), show=False):
+    def distance(self, source, target, cost=(1, 1, 1, 1)):
         """Damerau-Levenshtein distance with costs for deletion, insertion, substitution and transposition"""
         s_len = len(source)
         t_len = len(target)  
@@ -63,8 +63,6 @@ class DamerauLevenshtein(Levenshtein):
                     
             last_row[s_symbol] = i
         
-        if show:
-            self.show_matrix(source, target, [row[1:] for row in D[1:]])
         return D[-1][-1]
     
     def max_distance(self, source, target, cost=(1,1,1,1)):

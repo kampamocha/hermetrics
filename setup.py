@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="hermetrics",
-    version="0.1.12",
+    version="0.1.13",
     author="kampamocha",
     author_email="diego.campos.sobrino@gmail.com",
     description="A package for string distance and similarity metrics",
@@ -20,6 +20,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     keywords="string metric distance similarity",
-    python_requires=">=3.0",
-    install_requires=['matplotlib>=3']
+    python_requires=">=3.0"
 )

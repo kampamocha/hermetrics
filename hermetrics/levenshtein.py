@@ -1,4 +1,3 @@
-from matplotlib.pyplot import gca
 from .metric import Metric
 
 class Levenshtein(Metric):
@@ -6,7 +5,7 @@ class Levenshtein(Metric):
     def __init__(self, name='Levenshtein'):
         super().__init__(name=name)
       
-    def distance(self, source, target, cost=(1,1,1), show=False):
+    def distance(self, source, target, cost=(1,1,1)):
         """Levenshtein distance with costs for deletion, insertion and substitution"""
         s_len = len(source)
         t_len = len(target)  
@@ -39,8 +38,6 @@ class Levenshtein(Metric):
                           
                 D[i][j] = min(deletion, insertion, substitution_or_equal)
     
-        if show:
-            self.show_matrix(source, target, D)
         return D[-1][-1]
         
     def max_distance(self, source, target, cost=(1,1,1)):
@@ -58,22 +55,6 @@ class Levenshtein(Metric):
         max_sub = min(s_len, t_len)
         
         return max_del*del_cost + max_ins*ins_cost + max_sub*sub_cost
-
-    def show_matrix(self, source, target, M):
-        """Show matrix with values from calculation"""       
-        #ax = plt.gca()
-        ax = gca()
-        ax.set_yticks(range(len(source)+1))
-        ax.set_xticks(range(len(target)+1))
-        ax.set_yticklabels(list("ø" + source))
-        ax.set_xticklabels(list("ø" + target))
-        ax.tick_params(top=True, bottom=False, labeltop=True, labelbottom=False)
-        
-        for i in range(len(M)):
-            for j in range(len(M[0])):
-                ax.text(j, i, M[i][j], ha='center', va='center')
-        
-        ax.imshow(M, aspect='equal', cmap='Blues')
 
     
 if(__name__ == '__main__'):

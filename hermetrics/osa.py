@@ -11,7 +11,7 @@ class Osa(Levenshtein):
     def __init__(self, name='OSA'):
         super().__init__(name=name)
 
-    def distance(self, source, target, cost=(1, 1, 1, 1), show=False):
+    def distance(self, source, target, cost=(1, 1, 1, 1)):
         """OSA (Optimal String Alignment) distance with costs for deletion, insertion, substitution and transposition"""
         s_len = len(source)
         t_len = len(target)  
@@ -47,8 +47,6 @@ class Osa(Levenshtein):
                 if i > 1 and j > 1 and source[i-1] == target[j-2] and source[i-2] == target[j-1]:
                     D[i][j] = min(D[i][j], D[i-2][j-2] + tra_cost)
         
-        if show:
-            self.show_matrix(source, target, D)
         return D[-1][-1]  
     
     def max_distance(self, source, target, cost=(1,1,1,1)):
