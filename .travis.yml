@@ -12,6 +12,7 @@ install:
   - pip install ".[tests]" .
 script:
   - bash run_all_tests.sh
+  - coverage run run_all_tests.sh
 after success:
   - codecov
 
