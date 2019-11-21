@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/kampamocha/hermetrics.svg?branch=master)](https://travis-ci.com/kampamocha/hermetrics)
+
 # hermetrics
 Python library for distance and similarity metrics
 
