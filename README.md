@@ -12,7 +12,7 @@ pip install hermetrics
 ## Overview
 Hermetrics is a library designed for use in experimentation with string metrics. The library features a base class *Metric* which is highly configurable and can be used to implement custom metrics.
 
-Based on *Metric* are some common string metrics already implemented to compute the *distance* between two strings. Some common edit distance metrics such as *Levenshtein* can be parametrized with different costs for each edit operation, althought have been only thorougly tested with costs equal to 1. Also, the implemented metrics can be used to compare any iterable in addition to strings, but more tests are needed.
+Based on *Metric* are some common string metrics already implemented to compute the *distance* between two strings. Some common edit distance metrics such as *Levenshtein* can be parametrized with different costs for each edit operation, althought have been only thoroughly tested with costs equal to 1. Also, the implemented metrics can be used to compare any iterable in addition to strings, but more tests are needed.
 
 A metric has three main methods *distance*, *normalized_distance* and *similarity*. In general the *distance* method computes the absolute distance between two strings, whereas *normalized_distance* can be used to scale the distance to a particular range, usually (0,1), and the *similarity* method being normally defined as (1-*normalized_distance*).
 
