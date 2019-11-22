@@ -2,16 +2,13 @@ language: python
 python:
   - "3.6"
   - "3.7"
+  - "3.8"
 before_install:
   - python --version
   - pip install -U pip
-  - pip install codecov
 install:
   - pip install -r requirements.txt
-  - pip install ".[tests]" .
+  - pip install .
 script:
   - bash run_all_tests.sh
-  - coverage run run_all_tests.sh
-after success:
-  - codecov
 
