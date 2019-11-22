@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/kampamocha/hermetrics.svg?branch=master)](https://travis-ci.com/kampamocha/hermetrics) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.com/kampamocha/hermetrics.svg?branch=master)](https://travis-ci.com/kampamocha/hermetrics) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/76591e27d9794cd28b4d7972219c9d4c)](https://www.codacy.com/manual/kampamocha/hermetrics?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kampamocha/hermetrics&amp;utm_campaign=Badge_Grade) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # hermetrics
 Python library for distance and similarity metrics
