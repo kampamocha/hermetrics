@@ -7,7 +7,7 @@ import unittest
 from hermetrics.hamming import Hamming
 
 class TestHamming(unittest.TestCase):
-    
+
     def test_distance(self):
         """
         Test for distance function
@@ -64,7 +64,7 @@ class TestHamming(unittest.TestCase):
         self.assertEqual(m.similarity("end", "ended"), 0.6)
         self.assertEqual(m.similarity("end", "weekend"), 0)
         self.assertEqual(m.similarity("ABCDEFGH", "AB*D*F*H"), 0.625)
-        
-        
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -3,7 +3,7 @@ import unittest
 from hermetrics import MetricComparator
 
 class TestMetricComparator(unittest.TestCase):
-    
+
     def test_similarity(self):
         """
         Test for similarity function
@@ -20,6 +20,6 @@ class TestMetricComparator(unittest.TestCase):
         obtained = m.similarity("hardin", "martinez")
         for k, v in obtained.items():
             self.assertAlmostEqual(v, expected[k], places=3)
-               
+
 if __name__ == '__main__':
     unittest.main()

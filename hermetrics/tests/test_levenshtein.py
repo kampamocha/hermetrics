@@ -7,7 +7,7 @@ import unittest
 from hermetrics.levenshtein import Levenshtein
 
 class TestLevenshtein(unittest.TestCase):
-    
+
     def test_distance(self):
         """
         Test for distance function
@@ -66,6 +66,6 @@ class TestLevenshtein(unittest.TestCase):
         self.assertEqual(m.similarity("start", "end"), 0)
         self.assertEqual(m.similarity("end", "ended"), 0.6)
         self.assertEqual(m.similarity("ABCDEFGH", "AB*D*F*H"), 0.625)
-        
+
 if __name__ == '__main__':
     unittest.main()

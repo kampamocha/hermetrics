@@ -7,7 +7,7 @@ import unittest
 from hermetrics.damerau_levenshtein import DamerauLevenshtein
 
 class TestDamerauLevenshtein(unittest.TestCase):
-    
+
     def test_distance(self):
         """
         Test for distance function
@@ -48,8 +48,8 @@ class TestDamerauLevenshtein(unittest.TestCase):
         self.assertEqual(m.similarity("", ""), 1)
         self.assertEqual(m.similarity("end", "ended"), 0.6)
         self.assertEqual(m.similarity("ABCDEFGH", "AB*D*F*H"), 0.625)
-        self.assertEqual(m.similarity("abcd", "cbad"), 0.5)        
+        self.assertEqual(m.similarity("abcd", "cbad"), 0.5)
         self.assertAlmostEqual(m.similarity("abc", "ca"), 1/3)
-        
+
 if __name__ == '__main__':
     unittest.main()

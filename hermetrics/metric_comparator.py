@@ -10,7 +10,7 @@ from .jaro_winkler import JaroWinkler
 class MetricComparator:
     """Class for metric comparison"""
 
-    def __init__(self, metrics=[ 
+    def __init__(self, metrics=[
             Hamming(),
             Levenshtein(),
             Osa(),
@@ -32,9 +32,8 @@ class MetricComparator:
         return results
 
 
-if(__name__ == '__main__'):  
+if(__name__ == '__main__'):
     print("Metric comparator")
 
-    
-        
-            
+
+

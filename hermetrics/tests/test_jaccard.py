@@ -7,7 +7,7 @@ import unittest
 from hermetrics.jaccard import Jaccard
 
 class TestJaccard(unittest.TestCase):
-    
+
     def test_distance(self):
         """
         Test for distance function
@@ -18,7 +18,7 @@ class TestJaccard(unittest.TestCase):
         self.assertEqual(m.distance("abc", ""), 1)
         self.assertEqual(m.distance("", "abc"), 1)
         self.assertEqual(m.distance("", ""), 0)
-        self.assertEqual(m.distance("abcd", "dcba"), 0)        
+        self.assertEqual(m.distance("abcd", "dcba"), 0)
         self.assertEqual(m.distance("abcd", "abe"), 0.6)
         self.assertAlmostEqual(m.distance(["hello","world"], ["hello","cruel","world"]), 1/3)
 
@@ -32,9 +32,9 @@ class TestJaccard(unittest.TestCase):
         self.assertEqual(m.similarity("abc", ""), 0)
         self.assertEqual(m.similarity("", "xyz"), 0)
         self.assertEqual(m.similarity("", ""), 1)
-        self.assertEqual(m.similarity("abcd", "dcba"), 1)        
+        self.assertEqual(m.similarity("abcd", "dcba"), 1)
         self.assertEqual(m.similarity("abcd", "abe"), 0.4)
         self.assertAlmostEqual(m.similarity(["hello","world"], ["hello","cruel","world"]), 2/3)
-        
+
 if __name__ == '__main__':
     unittest.main()

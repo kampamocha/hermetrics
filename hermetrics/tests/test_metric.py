@@ -3,7 +3,7 @@ import unittest
 from hermetrics.metric import Metric
 
 class TestMetric(unittest.TestCase):
-    
+
     def test_distance(self):
         """
         Test for distance function
@@ -51,7 +51,7 @@ class TestMetric(unittest.TestCase):
         self.assertEqual(m.normalize(12, 10, 20), 0.2)
         self.assertEqual(m.normalize(8, 10, 20), 0)
         self.assertEqual(m.normalize(24, 10, 20), 1)
-        self.assertEqual(m.normalize(0, -1, 1), 0.5)        
+        self.assertEqual(m.normalize(0, -1, 1), 0.5)
         self.assertEqual(m.normalize(0, 0, 0), 0)
         self.assertEqual(m.normalize(1, 1, 1), 0)
         self.assertEqual(m.normalize(50, 100, 1), 0)
@@ -77,6 +77,6 @@ class TestMetric(unittest.TestCase):
         self.assertEqual(m.similarity("abc", ""), 0)
         self.assertEqual(m.similarity("", "abc"), 0)
         self.assertEqual(m.similarity("", ""), 1)
-        
+
 if __name__ == '__main__':
     unittest.main()

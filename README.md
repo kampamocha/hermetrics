@@ -209,6 +209,7 @@ jaw.similarity('abcd', 'abe', p=0.25) # 0.861
 ## To Do
 
 * Use \**kwargs instead of cost tuples
+* Remove tests from pip install
 * Weighted Levenshtein
 * Show matrix for Levenshtein like distances
 * Allow variable maximun prefix length in Jaro-Winkler

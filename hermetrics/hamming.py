@@ -3,10 +3,10 @@ from .metric import Metric
 # https://en.wikipedia.org/wiki/Hamming_distance
 # In this version is not mandatory to have same length strings
 class Hamming(Metric):
-    
+
     def __init__(self, name='Hamming'):
         super().__init__(name=name)
-    
+
     def distance(self, source, target, cost=1):
         """Hamming distance with right padding"""
         # Difference in length
@@ -18,6 +18,6 @@ class Hamming(Metric):
         """Hamming maximum distance value"""
         return max(len(source), len(target)) * cost
 
-    
+
 if(__name__ == '__main__'):
     print("Hamming distance")

@@ -1,5 +1,5 @@
 # https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance
-# Optimal String Alignment (OSA) also known as Restrited Edit distance is a 
+# Optimal String Alignment (OSA) also known as Restrited Edit distance is a
 # simpler version of the Damerau-Levenshtein (DL) distance having the condiiton
 # that no substring is edited more than once, whereas the DL distance presents
 # no such restriction
@@ -7,25 +7,25 @@
 from .levenshtein import Levenshtein
 
 class Osa(Levenshtein):
-    
+
     def __init__(self, name='OSA'):
         super().__init__(name=name)
 
     def distance(self, source, target, cost=(1, 1, 1, 1)):
         """OSA (Optimal String Alignment) distance with costs for deletion, insertion, substitution and transposition"""
         s_len = len(source)
-        t_len = len(target)  
-    
+        t_len = len(target)
+
         if type(cost) == int or type(cost) == float:
             del_cost = ins_cost = sub_cost = tra_cost = cost
         else:
             del_cost, ins_cost, sub_cost, tra_cost = cost
-        
+
         rows = s_len + 1
         cols = t_len + 1
         D = [[0 for j in range(cols)] for i in range(rows)]
-    
-        # source prefixes can be transformed into empty strings 
+
+        # source prefixes can be transformed into empty strings
         # by deletions:
         for i in range(1, rows):
             D[i][0] = i * del_cost
@@ -33,7 +33,7 @@ class Osa(Levenshtein):
         # by inserting the characters
         for j in range(1, cols):
             D[0][j] = j * ins_cost
-            
+
         for j in range(1, cols):
             for i in range(1, rows):
                 deletion = D[i-1][j] + del_cost
@@ -41,14 +41,14 @@ class Osa(Levenshtein):
                 substitution_or_not = D[i-1][j-1]
                 if source[i-1] != target[j-1]:
                     substitution_or_not += sub_cost
-                    
+
                 D[i][j] = min(deletion, insertion, substitution_or_not)
-                
+
                 if i > 1 and j > 1 and source[i-1] == target[j-2] and source[i-2] == target[j-1]:
                     D[i][j] = min(D[i][j], D[i-2][j-2] + tra_cost)
-        
-        return D[-1][-1]  
-    
+
+        return D[-1][-1]
+
     def max_distance(self, source, target, cost=(1,1,1,1)):
         """OSA maximum distance value (same as Levenshtein to account for difference in operations)"""
         if type(cost) == int or type(cost) == float:
@@ -56,17 +56,17 @@ class Osa(Levenshtein):
         else:
             lev_cost = cost[:3]
         return super().max_distance(source, target, lev_cost)
-    
+
     def max_distance_with_transpositions(self, source, target, cost=(1,1,1,1)):
         """
         OSA maximum distance value.
         This version does consider transpositions, but used with the
         normalization function supress the effect of them
-        
+
         """
         s_len = len(source)
         t_len = len(target)
-    
+
         if type(cost) == int or type(cost) == float:
             del_cost = ins_cost = sub_cost = tra_cost = cost
         else:
@@ -85,5 +85,5 @@ class Osa(Levenshtein):
         ins_dist = max_ins * ins_cost
         sub_dist = max_sub * sub_cost
         tra_dist = max_tra * tra_cost + extra_sub * sub_cost
-           
+
         return del_dist + ins_dist + min(sub_dist, tra_dist)
