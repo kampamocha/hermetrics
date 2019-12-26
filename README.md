@@ -22,7 +22,7 @@ The normalization of the distance can be customized overriding the auxiliary met
 
 ## *Metric* class
 
-*Metric* is a base class that can receive as arguments six specific functions to be used as methods for the metric being implemented. The class constructor just assign the functions received as parameters to the class methods. If ypu omit some parameter then a default method is used, which allows you to implement metrics without the need to rewrite some of the functionality that is common among metrics.
+*Metric* is a base class that can receive as arguments six specific functions to be used as methods for the metric being implemented. The class constructor just assign the functions received as parameters to the class methods. If you omit some parameter then a default method is used, which allows you to implement metrics without the need to rewrite some of the functionality that is common among metrics.
 
 ```python
 class Metric:
@@ -204,6 +204,35 @@ jaw.similarity('abcd', 'abe') # 0.778
 jaw.similarity('abcd', 'abe', p=0.05) # 0.750
 jaw.similarity('abcd', 'abe', p=0.15) # 0.806
 jaw.similarity('abcd', 'abe', p=0.25) # 0.861
+``` 
+
+## Metric comparator
+This is a class useful to compare the result of various metrics when applied on the same strings. For example, to see the difference between OSA and Damerau-Levenshtein you can pass those two metrics on a list to a *MetricComparator* instance and compute the similarity between the same two strings.
+
+```python
+from hermetrics.osa import Osa
+from hermetrics.damerau_levenshtein import DamerauLevenshtein
+from hermetrics.metric_comparator import MetricComparator
+
+mc = MetricComparator([Osa(), DamerauLevenshtein()])
+
+mc.similarity("abcd", "cad") # {'OSA': 0.25, 'Damerau-Levenshtein': 0.5}
+``` 
+By default the *MetricComparator* class use the 8 metrics implemented on the library, so you can compare all of them on the same two strings. Currently the similarity is the only measure implemented on the class.
+
+```python
+from hermetrics.metric_comparator import MetricComparator
+
+mc = MetricComparator()
+
+mc.similarity("abcd", "cad") # {'Hamming': 0,
+                             #  'Levenshtein': 0.25,
+                             #  'OSA': 0.25,
+                             #  'Damerau-Levenshtein': 0.5,
+                             #  'Jaccard': 0.75,
+                             #  'Dice': 0.8571428571428571,
+                             #  'Jaro': 0.7222222222222222,
+                             #  'Jaro-Winkler': 0.7222222222222222 }
 ``` 
 
 ## To Do
